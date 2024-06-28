@@ -16,7 +16,7 @@ namespace ClientePainel.Controllers
 
         public IActionResult Index()
         {
-            List<ClientesController> clientes = Cliente.GetClientes(_context);
+            List<Cliente> clientes = Cliente.GetClientes(_context);
             return View(clientes);
         }
 
@@ -63,7 +63,7 @@ namespace ClientePainel.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(in id)
+        public IActionResult DeleteConfirmed(int id)
         {
             Cliente.DeleteCliente(id, _context);
             return RedirectToAction("Index");

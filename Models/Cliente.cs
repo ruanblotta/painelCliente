@@ -16,26 +16,31 @@ namespace ClientePainel.Models
         public string Email { get; set; }
 
         
-    public void AddCliente(ApplicationDbContext context)
-    {
-        context.Clientes.Add(this);
-        context.SaveChanges();
-    }
-
-    public void UpdateCliente(ApplicationDbContext context)
-    {
-        context.Clientes.Update(this);
-        context.SaveChanges();
-    }
-
-    public static void DeleteCliente(int id, ApplicationDbContext context)
-    {
-        var cliente = context.Clientes.Find(id);
-        if (cliente != null)
+        public void AddCliente(ApplicationDbContext context)
         {
-            context.Clientes.Remove(cliente);
+            context.Clientes.Add(this);
             context.SaveChanges();
         }
-    }
+
+        public static List<Cliente> GetClientes(ApplicationDbContext context)
+        {
+            return context.Clientes.ToList();
+        }
+        public void UpdateCliente(ApplicationDbContext context)
+        {
+            context.Clientes.Update(this);
+            context.SaveChanges();
+        }
+
+        public static void DeleteCliente(int id, ApplicationDbContext context)
+        {
+            var cliente = context.Clientes.Find(id);
+            if (cliente != null)
+            {
+                context.Clientes.Remove(cliente);
+                context.SaveChanges();
+            }
+        }
+
     }
 }
