@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using ClientePainel.Models;
 
 namespace ClientePainel.Data
 {
-    public class AplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public AplicationDbContext(DbContextOptions<ApplicationBuilder> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 
